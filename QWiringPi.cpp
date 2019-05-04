@@ -8,6 +8,8 @@ QWiringPi::QWiringPi(QObject *parent)
     {
         wiringPiSetup();
         _isSetUp = true;
+        connect(this, &QThread::finished, this, &QObject::deleteLater);
+        start();
     }
 }
 
