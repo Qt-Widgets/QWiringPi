@@ -90,6 +90,9 @@ bool QWiringPi::setPullOff(Pin pin)
     if(!_isSetUp)
         return false;
 
+    if(_pins.find(pin) == _pins.end())
+        return false;
+
     if(_pins[pin].first != INPUT)
         return false;
 
@@ -100,6 +103,9 @@ bool QWiringPi::setPullOff(Pin pin)
 bool QWiringPi::setPullUp(Pin pin)
 {
     if(!_isSetUp)
+        return false;
+
+    if(_pins.find(pin) == _pins.end())
         return false;
 
     if(_pins[pin].first != INPUT)
@@ -114,6 +120,9 @@ bool QWiringPi::setPullDown(Pin pin)
     if(!_isSetUp)
         return false;
 
+    if(_pins.find(pin) == _pins.end())
+        return false;
+
     if(_pins[pin].first != INPUT)
         return false;
 
@@ -126,6 +135,9 @@ bool QWiringPi::write(Pin pin, bool value)
     if(!_isSetUp)
         return false;
 
+    if(_pins.find(pin) == _pins.end())
+        return false;
+
     if(_pins[pin].first != OUTPUT)
         return false;
 
@@ -136,6 +148,9 @@ bool QWiringPi::write(Pin pin, bool value)
 bool QWiringPi::write(Pin pin, unsigned short value)
 {
     if(!_isSetUp)
+        return false;
+
+    if(_pins.find(pin) == _pins.end())
         return false;
 
     if(_pins[pin].first != PWM_OUTPUT)
@@ -151,6 +166,9 @@ bool QWiringPi::write(Pin pin, unsigned short value)
 bool QWiringPi::read(Pin pin, bool& value)
 {
     if(!_isSetUp)
+        return false;
+
+    if(_pins.find(pin) == _pins.end())
         return false;
 
     if(_pins[pin].first != INPUT)
